@@ -13,6 +13,24 @@ const Header = () => {
     return null;
   }
 
+  const date = new Date();
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const hours = Math.floor((date.getTime() % (3600 * 24)) / 3600);
+  const minutes = Math.floor((date.getTime() % 3600) / 60);
+
   return (
     <View style={styles.container}>
       {/* Date and Info */}
@@ -25,7 +43,7 @@ const Header = () => {
             letterSpacing: 1,
           }}
         >
-          February 14, 10:30 PM
+          {monthNames[date.getMonth()]} {date.getDate()}, {date.getHours()}:{date.getMinutes()} PM
         </Text>
         <Text
           style={{ fontFamily: "Poppins-Bold", color: "#FEFEFE", fontSize: 30 }}
@@ -35,7 +53,7 @@ const Header = () => {
       </View>
 
       <Image
-        style={{ width: 60, height: 60, borderRadius: "50%" }}
+        style={{ width: 55, height: 55, borderRadius: "50%" }}
         source={require("../../assets/images/user.png")}
       />
     </View>
